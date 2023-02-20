@@ -1,4 +1,3 @@
-
 def ler_ficheiro(idade, sexo, tensao, colesterol, batimento, tem_doenca):
 	file = open("myheart.csv", "r")
 	file.readline()  # ignorar a primeira linha
@@ -46,9 +45,9 @@ def doenca_por_idade(idade, tem_doenca):
 	print(">-[Faixa etária]-|-[Nº Doentes]-<")
 	print(">----------------|--------------<")
 	for key, valor in ordenado.items():
-		if valor <10:
+		if valor < 10:
 			print(f">    [{key},{key+4}]     |      {valor}       <")
-		elif valor <100:
+		elif valor < 100:
 			print(f">    [{key},{key + 4}]     |      {valor}      <")
 		else:
 			print(f">    [{key},{key + 4}]     |      {valor}     <")
@@ -60,6 +59,7 @@ def doenca_por_colesterol(colesterol, tem_doenca):
 
 	for i in range(len(tem_doenca)):
 		if tem_doenca[i] == 1:
+			# não faz sentido haver níveis de colesterol a 0
 			if colesterol[i] == 0:
 				continue
 			escolha = (colesterol[i] // 10) * 10
@@ -80,6 +80,7 @@ def doenca_por_colesterol(colesterol, tem_doenca):
 			print(f">      [{key},{key+9}]      |      {valor}      <")
 		else:
 			print(f">      [{key},{key+9}]      |      {valor}     <")
+	print(">---------------------|--------------<")
 
 
 def main():
@@ -111,6 +112,7 @@ def main():
 		opcao = int(input("Escolha: "))
 
 	print("Obrigado!")
+
 
 if __name__ == "__main__":
 	main()
